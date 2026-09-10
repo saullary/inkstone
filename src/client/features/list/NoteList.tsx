@@ -187,7 +187,7 @@ export function NoteList() {
         <div className="mb-2.5 flex items-center justify-between gap-2">
           <div className="min-w-0">
             <h2 className="truncate text-[14.5px] font-semibold tracking-[-0.016em] text-[var(--text-primary)]">{title}</h2>
-            {view === 'folder' && <p className="mt-0.5 truncate text-[10.5px] text-[var(--text-quaternary)]">{t("folders.includes_subfolders")}</p>}
+            {/* {view === 'folder' && <p className="mt-0.5 truncate text-[10.5px] text-[var(--text-quaternary)]">{t("folders.includes_subfolders")}</p>} */}
           </div>
           <div className="flex shrink-0 items-center gap-0.5">
             {breakpoint === 'tablet' && (<Tooltip label={t("notes.open_navigation")}>

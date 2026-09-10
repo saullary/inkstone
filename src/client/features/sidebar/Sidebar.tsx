@@ -10,7 +10,7 @@ import { switchThemeWithTransition, useUi } from '../../store/ui';
 import { useSession } from '../../store/session';
 import { useUpdate } from '../../store/update';
 import { createContextualNote, useFolderTree, useNavigationCounts, useNotes, type FolderNode } from '../../store/notes';
-import { folderDescendantIds, folderPath, folderPathLabel, openFolderView } from '../../lib/folders';
+import { folderDescendantIds, folderPath, openFolderView } from '../../lib/folders';
 import { FolderAppearance, FolderPicker } from '../folders/FolderPicker';
 import { TagAppearance } from '../tags/TagAppearance';
 import { createTag, deleteTag, renameTag, setTagColor } from '../tags/tagMutations';

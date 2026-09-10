@@ -200,7 +200,7 @@ export function NoteList() {
                 <ArrowDownWideNarrow size={14}/>
               </IconButton>
             </Tooltip>
-            {view !== 'trash' && view !== 'archived' && (<Tooltip label={t("common.new_note")} combo="mod+n">
+            {view !== 'trash' && view !== 'archived' && (<Tooltip label={t("common.new_note")}>
                 <IconButton label={t("common.new_note")} size="sm" onClick={() => void createContextualNote()}>
                   <Plus size={15}/>
                 </IconButton>

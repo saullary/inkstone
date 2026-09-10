@@ -365,7 +365,7 @@ export const ZH_CN_MESSAGES = {
     "notes.everything_is_neatly_organized": "干净利落",
     "notes.failed_to_create_copy": "创建副本失败",
     "notes.failed_to_open_note": "打开笔记失败",
-    "notes.filter_in_this_view": "在此视图中筛选…",
+    "notes.filter_in_this_view": "在此范围搜索",
     "notes.full_sync_pagination_data_is_incomplete": "全量同步分页信息不完整",
     "notes.sync_pagination_data_is_incomplete": "同步分页信息不完整",
     "notes.keep_notes_here_when_you_want_them_out_of_the_way_but_not_deleted": "暂时不看但又不想删的笔记可以放这里",

@@ -346,7 +346,7 @@ function FolderSection() {
       <div className="group/head flex items-center justify-between pr-1">
         <SectionLabel>{t("navigation.folder")}</SectionLabel>
         <Tooltip label={t("common.new_folder")}>
-          <IconButton label={t("common.new_folder")} size="sm" disabled={creating} onClick={() => void create(null)} className="opacity-100 transition-opacity md:opacity-0 md:group-hover/head:opacity-100 md:focus-visible:opacity-100">
+          <IconButton label={t("common.new_folder")} size="sm" disabled={creating} onClick={() => void create(null)}>
             <FolderPlus size={13}/>
           </IconButton>
         </Tooltip>
@@ -545,7 +545,7 @@ function FolderRow({ node, siblings, index, parentNode, parentSiblings, onCreate
           </button>
         </Tooltip>
 
-        <span className={cn('shrink-0', active && !node.color ? 'text-[var(--accent)]' : !node.color && 'text-[var(--text-tertiary)]')} style={{ color: node.color ?? undefined }}>
+        <span className={cn('shrink-0 flex', active && !node.color ? 'text-[var(--accent)]' : !node.color && 'text-[var(--text-tertiary)]')} style={{ color: node.color ?? undefined }}>
           {node.icon ? (<span className={cn('text-[13px] leading-none', justCreated && 'anim-mark-enter')}>{node.icon}</span>) : (<FolderMotionIcon open={expanded && hasChildren} drawing={justCreated}/>)}
         </span>
 
@@ -557,25 +557,21 @@ function FolderRow({ node, siblings, index, parentNode, parentSiblings, onCreate
                     onFinishRename();
                 }
                 e.stopPropagation();
-            }} className="min-w-0 flex-1 rounded-[var(--r-xs)] border border-[var(--accent)] bg-[var(--bg-surface)] px-1 py-px text-[12.5px] outline-none"/>) : (<Tooltip label={folderPathLabel(folders, node.id)} side="right">
-            <button type="button" aria-current={active ? 'page' : undefined} onClick={() => openFolderView(folders, node.id)} onDoubleClick={() => onStartRename(node.id)} className="min-w-0 flex-1 truncate py-1 text-left text-[12.5px] font-medium">
+            }} className="min-w-0 flex-1 rounded-[var(--r-xs)] border border-[var(--accent)] bg-[var(--bg-surface)] px-1 py-px text-[12.5px] outline-none"/>) : (<button type="button" aria-current={active ? 'page' : undefined} onClick={() => openFolderView(folders, node.id)} onDoubleClick={() => onStartRename(node.id)} className="min-w-0 flex-1 truncate py-1 text-left text-[12.5px] font-medium">
               {node.name}
-            </button>
-          </Tooltip>)}
+            </button>)}
 
         {!renaming && (<>
-            <span className="shrink-0 text-[11px] tabular text-[var(--text-quaternary)] transition-opacity group-hover:opacity-0">
+            <span className="shrink-0 mr-1 text-[11px] tabular text-[var(--text-quaternary)] transition-opacity group-hover:opacity-0">
               {node.totalNotes > 0 ? node.totalNotes : ''}
             </span>
-            <Tooltip label={t("common.more_actions")} side="left">
-              <IconButton label={t("common.more_actions")} size="sm" onClick={(e) => {
+            <IconButton label={t("common.more_actions")} size="sm" onClick={(e) => {
                     e.stopPropagation();
                     menu.close();
                     setMenuOpen(true);
                 }} className="absolute right-1 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100">
                 <MoreHorizontal size={13}/>
               </IconButton>
-            </Tooltip>
           </>)}
       </div>
 

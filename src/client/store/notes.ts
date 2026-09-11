@@ -399,15 +399,17 @@ export const useNotes = create<NotesState>((set, get) => ({
         const summary = state.notes[id];
         if (!summary)
             return;
-        setTimeout(() => {
-            useUi.getState().setMobilePane(summary.charCount < 30 ? 'editor' : 'preview');
-        }, 10);
+        const updateMobilePane = (note: NoteSummary) => {
+            if(note) {
+                useUi.getState().setMobilePane(note.charCount < 30 ? 'editor' : 'preview');
+            }
+        };
         if (hasOwnContent(state.contents, id)) {
             useUi.getState().setWorkspaceNote(targetPane, id, activate);
             revalidateNote(id, summary.rev, set, get);
+            updateMobilePane(summary);
             return;
         }
-        useUi.getState().setMobilePane(summary.charCount < 30 ? 'editor' : 'preview');
         const cached = await localDb.getContent(id);
         let currentSummary = get().notes[id];
         if (requestSequence !== openSequences[targetPane] ||
@@ -527,6 +529,7 @@ export const useNotes = create<NotesState>((set, get) => ({
             if (visibleTitle !== undefined)
                 scheduleShellSave(get);
             useUi.getState().setWorkspaceNote(targetPane, id, activate);
+            updateMobilePane(state.notes[id]!);
             if (restoredPending) {
                 if (foreignPending && get().online)
                     void replayOutbox(get, set);
@@ -544,6 +547,7 @@ export const useNotes = create<NotesState>((set, get) => ({
             validatedRevisions.set(id, note.rev);
             if (requestSequence === openSequences[targetPane] && get().notes[id]) {
                 useUi.getState().setWorkspaceNote(targetPane, id, activate);
+                updateMobilePane(note);
             }
         }
         catch (err) {

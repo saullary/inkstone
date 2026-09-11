@@ -423,12 +423,12 @@ const NoteRow = memo(function NoteRow({ note, highlight, density, tagColors, pos
         }} onContextMenu={(event) => {
             setMenuOpen(false);
             menu.onContextMenu(event);
-        }} className={cn('motion-note-row group relative cursor-default rounded-[var(--r-md)] border border-transparent px-2.5 pr-11 transition-[background-color,border-color,box-shadow,transform] duration-[var(--dur-fast)] md:pr-10', density === 'compact' ? 'py-[7px]' : 'py-2.5', selectionHighlighted
+        }} className={cn('motion-note-row group relative cursor-default rounded-[var(--r-md)] px-2.5 transition-[background-color,border-color,box-shadow,transform] duration-[var(--dur-fast)]', density === 'compact' ? 'py-[7px]' : 'py-2.5', selectionHighlighted
             ? 'bg-[var(--accent-soft)] ring-1 ring-[var(--accent)]/40'
             : active
-                ? 'border-[var(--border-default)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)]'
+                ? 'bg-[var(--bg-surface)]'
                 : openInSecondary
-                    ? 'border-[var(--accent)]/35 bg-[var(--accent-soft)]/45'
+                    ? 'bg-[var(--accent-soft)]/45'
                 : 'hover:bg-[var(--bg-hover)]')}>
         <div className="flex items-start gap-1.5">
           <div className="min-w-0 flex-1">
@@ -444,7 +444,7 @@ const NoteRow = memo(function NoteRow({ note, highlight, density, tagColors, pos
               {note.isStarred && <Star size={10} className="anim-mark-enter shrink-0 fill-current text-[var(--warning)]"/>}
             </div>
 
-            {density === 'comfortable' && note.excerpt && (<p className="truncate-2 mt-1 text-[11.5px] leading-[1.5] text-[var(--text-tertiary)]">
+            {density === 'comfortable' && note.excerpt && (<p className="truncate mt-1 text-[12px] leading-[1.5] text-[var(--text-tertiary)]">
                 {note.excerpt}
               </p>)}
 
@@ -459,11 +459,11 @@ const NoteRow = memo(function NoteRow({ note, highlight, density, tagColors, pos
             <IconButton label={t("notes.open_to_side")} size="sm" active={openInSecondary} onClick={(event) => {
                   event.stopPropagation();
                   void openNote(note.id, { pane: 'secondary' });
-              }} className="absolute top-1.5 right-1.5 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" >
+              }} className={cn('absolute top-1.5 opacity-0 transition-opacity group-hover:opacity-100', !note.isStarred ? 'right-1.5' : 'right-6')} >
               <Columns2 size={14}/>
             </IconButton>
           </Tooltip>)}
-        {breakpoint === 'mobile' && (<Tooltip label={t("common.more_actions")} side="left">
+        {/* {breakpoint === 'mobile' && (<Tooltip label={t("common.more_actions")} side="left">
             <IconButton ref={menuButtonRef} label={t("common.more_actions")} size="sm" onClick={(event) => {
                   event.stopPropagation();
                   menu.close();
@@ -471,7 +471,7 @@ const NoteRow = memo(function NoteRow({ note, highlight, density, tagColors, pos
               }} className="absolute top-1.5 right-1.5">
               <MoreHorizontal size={16}/>
             </IconButton>
-          </Tooltip>)}
+          </Tooltip>)} */}
       </div>
 
       {menu.point && <Menu anchor={menu.point} open onClose={menu.close} items={items}/>}

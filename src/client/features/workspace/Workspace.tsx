@@ -335,7 +335,7 @@ export function Workspace({ mobileLayout = 'edit', onMobileBack, pane = 'active'
                 else event.currentTarget.blur();
             }}
           />
-          {note.isStarred && <Star size={11} className="shrink-0 fill-current text-[var(--warning)]"/>}
+          {/* {note.isStarred && <Star size={11} className="shrink-0 fill-current text-[var(--warning)]"/>} */}
           {!grouped && (<span className="hidden shrink-0 text-[11px] text-[var(--text-quaternary)] md:inline">
               {updatedTime}
             </span>)}

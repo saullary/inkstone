@@ -196,10 +196,12 @@ export function Workspace({ mobileLayout = 'edit', onMobileBack, pane = 'active'
         if (!note || !paneActive)
             return;
         const frame = window.requestAnimationFrame(() => {
-            if (!note.title)
+            if (!note.title) {
                 titleInputRef.current?.focus();
-            else
+            } else {
                 view?.focus();
+            }
+            setEditorLayout(note.charCount < 30 ? 'split' : 'preview');
         });
         return () => window.cancelAnimationFrame(frame);
     }, [note?.id, paneActive, view]);

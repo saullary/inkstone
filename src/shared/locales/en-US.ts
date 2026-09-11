@@ -1051,7 +1051,7 @@ export const EN_US_MESSAGES = {
     "workspace.no_version_history_yet": "No version history yet",
     "workspace.note_embed": "Note embed",
     "workspace.note_syntax": "Note syntax",
-    "workspace.open_a_note_from_the_list_or_press_shortcut_to_create_one": "Open a note from the list, or press {shortcut} to create one",
+    "workspace.open_a_note_from_the_list_or_press_shortcut_to_create_one": "Open a note from the list",
     "workspace.preview_only": "Preview only",
     "workspace.remote_image": "Remote image",
     "workspace.resize_editor_and_preview_panes": "Resize editor and preview panes",

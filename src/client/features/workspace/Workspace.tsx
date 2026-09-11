@@ -394,7 +394,7 @@ export function Workspace({ mobileLayout = 'edit', onMobileBack, pane = 'active'
               </Tooltip>
               <Menu anchor={exportMenuRef} open={exportMenuOpen} onClose={() => setExportMenuOpen(false)} items={exportMenuItems} align="end" width={200}/>
             </>)}
-          {showPreview && (<Tooltip label={t("common.outline")} combo="mod+shift+o">
+          {showPreview && (<Tooltip label={t("common.outline")}>
               <IconButton label={t("common.outline")} size="sm" active={isMobile ? mobileOutlineOpen : outlineOpen} onClick={() => isMobile ? setMobileOutlineOpen((open) => !open) : toggleOutline()}>
                 {(isMobile ? mobileOutlineOpen : outlineOpen) ? <PanelRightClose size={14}/> : <ListTree size={14}/>}
               </IconButton>

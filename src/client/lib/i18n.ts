@@ -161,7 +161,7 @@ function detectInitialLocale(): AppLocale {
 }
 function applyLocaleToDom(): void {
     document.documentElement.lang = locale;
-    document.title = t('app.document_title');
+    // document.title = t('app.document_title');
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (description)
         description.content = t('app.meta_description');

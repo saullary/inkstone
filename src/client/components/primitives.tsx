@@ -4,7 +4,18 @@ import { prettyCombo } from '../lib/hotkeys'
 import { resolveAvatarSource } from '../lib/avatar'
 
 
-export function Logo({ size = 20, className }: { size?: number; className?: string }) {
+export function Logo({ size = 20, className, tag = 'img' }: { size?: number; className?: string; tag?: string }) {
+  if(tag === 'img')
+    return (
+      <img
+        src="/logo.png"
+        alt="DuNote"
+        width={size}
+        height={size}
+        className={cn('ink-logo', className)}
+        aria-hidden="true"
+      />
+    );
   return (
     <svg
       viewBox="0 0 32 32"

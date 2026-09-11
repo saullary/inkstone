@@ -399,11 +399,15 @@ export const useNotes = create<NotesState>((set, get) => ({
         const summary = state.notes[id];
         if (!summary)
             return;
+        setTimeout(() => {
+            useUi.getState().setMobilePane(summary.charCount < 30 ? 'editor' : 'preview');
+        }, 10);
         if (hasOwnContent(state.contents, id)) {
             useUi.getState().setWorkspaceNote(targetPane, id, activate);
             revalidateNote(id, summary.rev, set, get);
             return;
         }
+        useUi.getState().setMobilePane(summary.charCount < 30 ? 'editor' : 'preview');
         const cached = await localDb.getContent(id);
         let currentSummary = get().notes[id];
         if (requestSequence !== openSequences[targetPane] ||

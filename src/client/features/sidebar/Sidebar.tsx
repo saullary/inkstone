@@ -555,7 +555,13 @@ function FolderRow({ node, siblings, index, parentNode, parentSiblings, onCreate
                     onFinishRename();
                 }
                 e.stopPropagation();
-            }} className="min-w-0 flex-1 rounded-[var(--r-xs)] border border-[var(--accent)] bg-[var(--bg-surface)] px-1 py-px text-[12.5px] outline-none"/>) : (<button type="button" aria-current={active ? 'page' : undefined} onClick={() => openFolderView(folders, node.id)} onDoubleClick={() => onStartRename(node.id)} className="min-w-0 flex-1 truncate py-1 text-left text-[12.5px] font-medium">
+            }} className="min-w-0 flex-1 rounded-[var(--r-xs)] border border-[var(--accent)] bg-[var(--bg-surface)] px-1 py-px text-[12.5px] outline-none"/>) 
+            : (<button type="button" aria-current={active ? 'page' : undefined} 
+                onClick={() => {
+                    openFolderView(folders, node.id);
+                    setMenuOpen(false);
+                }} 
+                onDoubleClick={() => onStartRename(node.id)} className="min-w-0 flex-1 truncate py-1 text-left text-[12.5px] font-medium">
               {node.name}
             </button>)}
 
@@ -566,7 +572,7 @@ function FolderRow({ node, siblings, index, parentNode, parentSiblings, onCreate
             <IconButton label={t("common.more_actions")} size="sm" onClick={(e) => {
                     e.stopPropagation();
                     menu.close();
-                    setMenuOpen(true);
+                    setMenuOpen(!menuOpen);
                 }} className="absolute right-1 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100">
                 <MoreHorizontal size={13}/>
               </IconButton>
@@ -729,7 +735,7 @@ function TagRow({ tag, active, renaming, onOpen, onStartRename, onFinishRename, 
             <IconButton label={t("common.more_actions")} size="sm" onClick={(event) => {
                 event.stopPropagation();
                 menu.close();
-                setMenuOpen(true);
+                setMenuOpen(!menuOpen);
             }} className="absolute right-1 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100">
               <MoreHorizontal size={13}/>
             </IconButton>

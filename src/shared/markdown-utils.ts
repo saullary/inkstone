@@ -695,9 +695,11 @@ export function slugifyHeading(text: string): string {
     text
       .trim()
       .toLowerCase()
-      .replace(/[\s\u3000]+/g, '-')
-      .replace(/[!-/:-@[-`{-~\uff01-\uff5e\uff0c\u3002\u3001\uff1b\uff1a\uff1f\uff08\uff09\u3010\u3011\u300c\u300d\u300e\u300f]/g, '')
-      .replace(/-{2,}/g, '-')
-      .replace(/^-+|-+$/g, '') || 'section'
+      // 去掉标点符号（保留字母、数字、空格、连字符、下划线）
+      .replace(/[^\w\s-]/g, '')
+      // 空白替换为连字符
+      .replace(/\s+/g, '-')
+      // 合并多个连字符
+      .replace(/-+/g, '-') || 'section'
   )
 }

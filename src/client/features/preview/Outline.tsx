@@ -20,7 +20,7 @@ export function Outline({ headings, onSelect, scrollerRef, className, }: {
         const onScroll = () => {
             cancelAnimationFrame(rafRef.current);
             rafRef.current = requestAnimationFrame(() => {
-                const top = scroller.scrollTop + 60;
+                const top = scroller.scrollTop + 80;
                 let current: string | null = headings[0]?.slug ?? null;
                 for (const heading of headings) {
                     const el = scroller.querySelector<HTMLElement>(`#${CSS.escape(heading.slug)}`);

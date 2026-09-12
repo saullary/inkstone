@@ -788,13 +788,7 @@
 
 .ink-prose img {
   max-width: 100%;
-  height: auto;
-  border-radius: var(--r-lg);
-  border: 1px solid var(--border-subtle);
-  display: block;
-  margin: 0.9em auto;
-  cursor: zoom-in;
-  background: var(--bg-inset);
+  display: initial;
 }
 .ink-prose figure {
   margin: 1em 0;

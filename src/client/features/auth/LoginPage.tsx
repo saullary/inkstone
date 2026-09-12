@@ -95,12 +95,11 @@ export function LoginPage() {
         <div className="mb-6 flex flex-col items-center text-center md:mb-8">
           <div
             className={cn(
-              'mb-5 flex size-14 items-center justify-center rounded-[18px]',
-              'border border-[var(--border-default)] bg-[var(--bg-surface)]',
-              'text-[var(--accent)] shadow-[var(--shadow-pop)]',
+              'mb-5 flex items-center justify-center rounded-[18px]',
+              'text-[var(--accent)]',
             )}
           >
-            <Logo size={27} />
+            <Logo size={60} />
           </div>
           <h1
             className="text-[30px] font-semibold tracking-[0.01em] text-[var(--text-primary)]"
@@ -108,13 +107,13 @@ export function LoginPage() {
           >
             {t("common.product_name")}
           </h1>
-          <p className="mt-2.5 text-[13px] leading-relaxed text-[var(--text-tertiary)]">
+          {/* <p className="mt-2.5 text-[13px] leading-relaxed text-[var(--text-tertiary)]">
             {challenge
               ? t('auth.two_step_verification_description')
               : firstRun
               ? t("auth.create_the_owner_account_this_step_appears_only_once")
               : t("auth.between_the_paper_and_ink_the_pen_comes_to_life_an_inkstone_is_used_to_p")}
-          </p>
+          </p> */}
         </div>
 
         <form
@@ -261,15 +260,15 @@ export function LoginPage() {
               {t("auth.this_is_a_private_instance_registration_is_closed_so_only_existing_accou")}
             </p>
           )}
-          <p className="text-[11px] tracking-[0.04em] text-[var(--text-quaternary)]">
+          {/* <p className="text-[11px] tracking-[0.04em] text-[var(--text-quaternary)]">
             {t("auth.live_split_view_markdown_preview_realtime_multi_device_sync_multiple_web")}
-          </p>
+          </p> */}
         </div>
       </div>
 
-      <footer className="pointer-events-none mt-6 text-center text-[11px] tracking-[0.05em] text-[var(--text-quaternary)] md:mt-8">
+      {/* <footer className="pointer-events-none mt-6 text-center text-[11px] tracking-[0.05em] text-[var(--text-quaternary)] md:mt-8">
         {t("auth.self_hosted_on_cloudflare_workers_your_data_is_yours")}
-      </footer>
+      </footer> */}
     </div>
   )
 }

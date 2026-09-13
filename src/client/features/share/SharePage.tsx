@@ -10,7 +10,6 @@ import { enhancePreview, renderPendingMermaid, resetMermaidNode, toggleCodeBlock
 import { Avatar, Button, Logo } from '../../components/primitives';
 import { Input } from '../../components/form';
 import { LoadingBlock } from '../../components/feedback';
-import { Tooltip } from '../../components/overlay';
 import { useUi } from '../../store/ui';
 import { moveMarkdownTabFocus, selectMarkdownTab } from '../preview/markdown-tabs';
 import { t, useLocale } from "../../lib/i18n";
@@ -189,14 +188,12 @@ export function SharePage({ slug }: {
             <Logo size={15}/>
           </span>
           <span className="text-[12.5px] font-semibold tracking-[-0.01em] text-[var(--text-primary)]">
-            {note?.site.name ?? 'Inkstone'}
+            {note?.site.name ?? ''}
           </span>
           <span className="flex-1"/>
-          <Tooltip label={t("share.switch_theme")} side="left">
-            <button type="button" onClick={toggleTheme} aria-label={t("share.switch_theme")} className="inline-flex size-9 items-center justify-center rounded-[var(--r-md)] text-[var(--text-tertiary)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)] md:size-7">
-              {dark ? <Sun size={14}/> : <Moon size={14}/>}
-            </button>
-          </Tooltip>
+          <button type="button" onClick={toggleTheme} aria-label={t("share.switch_theme")} className="inline-flex size-9 items-center justify-center rounded-[var(--r-md)] text-[var(--text-tertiary)] transition-colors hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)] md:size-7">
+            {dark ? <Sun size={14}/> : <Moon size={14}/>}
+          </button>
         </div>
       </header>
 

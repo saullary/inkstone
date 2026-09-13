@@ -8,7 +8,7 @@ import { getAllowRegistration } from './instance-settings'
 export async function buildSiteInfo(env: Env): Promise<SiteInfo> {
   const row = await env.DB.prepare(`SELECT COUNT(*) AS n FROM users`).first<{ n: number }>()
   return {
-    name: env.APP_NAME || 'Inkstone',
+    name: env.APP_NAME || 'DuNote',
     initialized: (row?.n ?? 0) > 0,
     registrationOpen: await getAllowRegistration(env.DB),
     r2Enabled: Boolean(env.FILES),

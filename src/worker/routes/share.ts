@@ -237,7 +237,7 @@ shareRoutes.post('/:slug', async (c) => {
     createdAt: note.created_at,
     updatedAt: note.updated_at,
     author: { name: note.name, avatarUrl: note.avatar_url },
-    site: { name: c.env.APP_NAME || 'Inkstone' },
+    site: { name: c.env.APP_NAME || 'DuNote' },
     share: { slug },
   }
   return c.json(body_)
@@ -272,7 +272,7 @@ async function renderShareShell(
   if (!shell.ok) return shell
   let html = await shell.text()
 
-  const siteName = c.env.APP_NAME || 'Inkstone'
+  const siteName = c.env.APP_NAME || 'DuNote'
   const expired = row?.expires_at ? row.expires_at < Date.now() : false
   const title = row && !expired && !row.password_hash ? publicShareTitle(row.title) : "Content unavailable"
   const description = row && !expired && !row.password_hash ? row.excerpt : ''

@@ -46,7 +46,7 @@ totpRoutes.post('/setup', requireAuth, async (c) => {
     env: c.env,
     userId: user.id,
     sessionId: c.get('sessionId'),
-    issuer: c.env.APP_NAME || 'Inkstone',
+    issuer: c.env.APP_NAME || 'DuNote',
     account: user.login,
   }))
 })

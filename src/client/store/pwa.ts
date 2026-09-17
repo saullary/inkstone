@@ -69,7 +69,7 @@ export function initializePwa(): void {
     if (reloadForUpdate) location.reload()
   })
   window.addEventListener('online', scheduleOfflineWarmup)
-  void registerServiceWorker()
+  // void registerServiceWorker() // 暂时不启用 自动检测更新服务
 }
 
 export function requestOfflineWarmup(): void {
